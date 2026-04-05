@@ -1,0 +1,586 @@
+/* --- 1. VARIABLES & RESET --- */
+:root {
+    --color-dark-bg: #FAF3E0; /* Deep Black/Teal Base */
+    --color-gradient-start: #f5637c; 
+    --color-gradient-end: #f8aaaa;
+    --color-accent: #ff1f69; /* Neon Teal/white */
+    --color-text-light:#0c0c0ce5;
+    --color-text-muted: hsl(0, 2%, 9%);
+    --color-card-bg: #fddaaf;
+    --color-border: #f1f1f1;
+    --font-primary: 'Poppins', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+/* Base Styling and Gradient Background */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Global Containers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+}
+
+.accent-text {
+    color: var(--color-accent);
+}
+
+/* --- 2. TYPOGRAPHY & BUTTONS --- */
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+h1, h2, h3, h4 {
+    margin-bottom: 0.5em;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-dark-bg);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark-bg);
+}
+
+/* --- 3. NAVBAR STYLES --- */
+#navbar {
+    background-color: transparent;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color var(--transition-speed);
+}
+
+/* Sticky effect using JavaScript */
+#navbar.sticky {
+    background-color: rgba(16, 24, 32, 0.95); /* Semi-transparent dark bg */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-text-light);
+    font-weight: 400;
+    padding: 5px 0;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+/* Underline effect for active/hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-speed);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-accent);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--color-accent);
+}
+
+
+/* --- 4. HERO SECTION --- */
+.hero-section {
+    padding-top: 150px; /* Account for fixed navbar */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-left .small-heading {
+    color: var(--color-accent);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.hero-left h1 {
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-bio {
+    color: var(--color-text-muted);
+    margin: 20px 0 30px;
+    max-width: 450px;
+}
+
+/* Role Tags */
+.role-tags .tag {
+    display: inline-block;
+    background-color: rgba(0, 255, 194, 0.1);
+    color: var(--color-accent);
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border: 1px solid var(--color-accent);
+}
+
+/* Social Icons */
+.social-icons a {
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    margin-right: 20px;
+    transition: color var(--transition-speed);
+}
+
+.social-icons a:hover {
+    color: var(--color-accent);
+    text-shadow: 0 0 5px var(--color-accent); /* Subtle glow */
+}
+
+/* Hero Image with Glow */
+.profile-glow-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    /* Dark overlay effect */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('placeholder-profile.png') center/cover;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    /* Neon Glow Effect */
+    box-shadow: 0 0 20px rgba(0, 255, 194, 0.4), 
+                0 0 40px rgba(0, 255, 194, 0.2);
+}
+
+.profile-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* Darken the image further */
+    filter: brightness(0.8) contrast(1.1);
+    transition: filter var(--transition-speed);
+}
+
+.profile-glow-container:hover .profile-image {
+    filter: brightness(0.9) contrast(1.2);
+}
+
+
+/* --- 5. SERVICES SECTION --- */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+
+.service-card {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--color-accent);
+    box-shadow: 0 10px 30px rgba(0, 255, 194, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    margin-top: 0;
+    color: var(--color-text-light);
+}
+
+.service-card p {
+    color: var(--color-text-muted);
+}
+
+/* --- 6. BIOGRAPHY SECTION --- */
+.bio-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.bio-left {
+    text-align: center;
+}
+
+.bio-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 3px solid var(--color-accent);
+}
+
+.bio-text {
+    margin-bottom: 30px;
+    color: var(--color-text-muted);
+}
+
+.info-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.info-card {
+    background-color: var(--color-card-bg);
+    padding: 15px;
+    border-left: 3px solid var(--color-accent);
+    font-size: 1rem;
+    color: var(--color-text-light);
+}
+
+.info-card span {
+    font-weight: 600;
+    color: var(--color-accent);
+    display: inline-block;
+    min-width: 60px;
+}
+
+.bio-buttons .btn {
+    margin-right: 15px;
+}
+
+/* --- 7. SKILLS SECTION (Progress Bars) --- */
+.skills-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    margin-bottom: 25px;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.skill-title {
+    color: var(--color-text-light);
+}
+
+.skill-percentage {
+    color: var(--color-accent);
+}
+
+.progress-bar-container {
+    background-color: var(--color-card-bg);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--color-accent);
+    transition: width 1s ease-out; /* JavaScript handles the width change */
+}
+
+
+
+
+/* --- 9. STATS COUNTER SECTION --- */
+.stats-section {
+    background-color: var(--color-card-bg);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 60px 0;
+}
+
+
+
+
+
+
+
+/* --- 11. CONTACT SECTION --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+.contact-left h2 {
+    text-align: left;
+}
+
+.contact-left p {
+    color: var(--color-text-muted);
+    margin-bottom: 25px;
+}
+
+.contact-details p {
+    color: var(--color-text-light);
+    margin-bottom: 15px;
+}
+
+.contact-details i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    background-color: var(--color-card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-dark-bg);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    border-radius: 5px;
+    transition: border-color var(--transition-speed);
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 5px rgba(0, 255, 194, 0.5);
+}
+
+.error-message {
+    color: var(--color-accent); /* Use accent color for errors */
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 5px;
+}
+
+/* --- 12. FOOTER --- */
+footer {
+    background-color: var(--color-dark-bg);
+    border-top: 1px solid var(--color-border);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logos {
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    margin-right: 30px;
+}
+
+.footer-content .social-icons {
+    display: inline-block;
+}
+
+.footer-content .social-icons a {
+    color: var(--color-text-muted);
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+footer p {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+
+/* --- 13. RESPONSIVENESS (Mobile & Tablet) --- */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none; /* Hide menu links on tablet/mobile initially */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-dark-bg);
+        border-top: 1px solid var(--color-border);
+        padding: 10px 20px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu toggle button */
+    }
+
+    .hero-grid, .bio-grid, .contact-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+        text-align: center;
+    }
+    
+    .hero-right {
+        order: -1; /* Move image above text on mobile */
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding-bottom: 80px;
+    }
+
+    .profile-glow-container {
+        max-width: 300px;
+        margin: 0 auto 40px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for stats */
+    }
+
+    .info-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-left h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr; /* Single column for stats on small phone */
+    }
+
+    .footer-logos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        margin: 0 0 15px 0;
+    }
+}
